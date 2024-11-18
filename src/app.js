@@ -5,9 +5,9 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', (req,res)=>{
-    res.status(200).send('funcionado corretamente!!!!!')
-})
+//app.get('/', (req,res)=>{
+   // res.status(200).send('funcionado corretamente!!!!!')
+//})
 
 app.listen(port, () =>{
     console.log(`servidor rodando na porta http://localhost:${port}`)

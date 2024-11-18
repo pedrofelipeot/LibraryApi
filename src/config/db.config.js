@@ -13,4 +13,17 @@ const dbConfig = {
 
 const db = mysql.createPool(dbConfig);
 
+export const consulta = (sql, valores = [], mensagemReject)=>{
+    return new Promise((resolve, reject) => {
+        db.query(sql,valores,(erro, resultado)=>{
+            if(erro){
+                return reject(mensagemReject)
+            } else{
+                const row = JSON.parse(JSON.stringify(resultado))
+                return resolve(resultado)
+            }
+        })
+    })
+} 
+
 export default db;
