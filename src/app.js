@@ -1,13 +1,13 @@
 import express from 'express';
-import livroRoutes from './routes/books.routes.js'; // Importa as rotas corretamente
+import livroRoutes from './routes/books.routes.js';
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
 
-// Agora o caminho de cada rota será diretamente o que está nas rotas
-app.use('/livros', livroRoutes); // Agora, as rotas vão começar com /livros
+
+app.use('/livros', livroRoutes); 
 
 app.get('/', (req, res) => {
     res.status(200).send('funcionando corretamente!');
