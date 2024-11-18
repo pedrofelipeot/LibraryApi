@@ -1,12 +1,12 @@
 import { Router } from "express";
-import booksController from "../controllers/books.controller.js"; // Certifique-se de que está importando corretamente
+import booksController from "../controllers/books.controller.js"; 
 
 const router = Router();
 
-router.get('/', booksController.index); // Agora sem o /livros
+router.get('/', booksController.index); 
 router.get('/:id', booksController.show);
-router.post('/', booksController.store); // Sem o /livros
+router.post('/', booksController.store); 
 router.put('/:id', booksController.update);
 router.delete('/:id', booksController.delete);
 
-export default router; // Lembre-se de exportar o roteador corretamente
+export default router; 
