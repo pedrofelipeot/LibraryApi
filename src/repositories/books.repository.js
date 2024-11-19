@@ -1,9 +1,9 @@
 import { consulta } from "../config/db.config.js";
-class LivroRepository{
+class BooksRepository{
 
 create(livro) {
     const sql = "INSERT INTO livros SET ?"; // Método para criar um livro
-    return consulta(sql, livro, "Não foi possível cadastrar um livro!");
+    return consulta(sql, livro, "Não foi possível cadastrar o livro!");
 }
 
 
@@ -30,4 +30,4 @@ delete(id) {
     return consulta(sql, [id], "Não foi possível excluir o livro!");
 }
 }
-export default new LivroRepository()
+export default new BooksRepository()
