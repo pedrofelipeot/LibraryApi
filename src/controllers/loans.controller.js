@@ -16,17 +16,34 @@ class LoansController {
   // Registrar devolução de um empréstimo
   async registrarDevolucao(req, res) {
     try {
-      const { id } = req.params; // ID do empréstimo
-      const rows = await loansRepository.registrarDevolucao(id);
+      const { id } = req.params; // Recebe o ID do empréstimo da URL
+      
+      // Verificar se o empréstimo com o ID existe e está pendente
+      const emprestimo = await loansRepository.buscarEmprestimoPorId(id);
+  
+      if (!emprestimo) {
+        return res.status(404).json({ erro: "Empréstimo não encontrado" });
+      }
+  
+      if (emprestimo.status !== 'pendente') {
+        return res.status(400).json({ erro: "Empréstimo já devolvido ou não pode ser devolvido" });
+      }
+  
+      const rows = await loansRepository.registrarDevolucao(id); // Chama o repositório para registrar a devolução
+  
+      // Verifica se a devolução foi bem-sucedida (se nenhuma linha foi afetada)
       if (!rows.affectedRows) {
         return res.status(404).json({ erro: "Empréstimo não encontrado ou já devolvido" });
       }
-      res.json({ mensagem: "Devolução registrada com sucesso" });
+  
+      res.json({ mensagem: "Devolução registrada com sucesso!" });
     } catch (erro) {
       console.log(erro);
       res.status(500).json({ erro: "Erro ao registrar devolução" });
     }
   }
+  
+  
 
   // Relatório: Livros mais emprestados
   async livrosMaisEmprestados(req, res) {

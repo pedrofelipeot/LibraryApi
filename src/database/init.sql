@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 CREATE TABLE IF NOT EXISTS emprestimos (
-     id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
     livro_id INT NOT NULL,
-    data_emprestimo DATE DEFAULT CURRENT_DATE,
+    data_emprestimo DATE, 
     data_devolucao DATE,
     status VARCHAR(20) DEFAULT 'pendente',
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id),

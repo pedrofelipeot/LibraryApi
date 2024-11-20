@@ -17,8 +17,8 @@ class usuarioRepository {
     }
 
     update(id,usuario){
-        const sql = "UPDATE usuario SET ? WHERE id = ?";
-        return consulta(sql,[usuario,id], "Não foi possível atualizar esse usuário")
+        const sql = "UPDATE usuarios SET ? WHERE id = ?";
+        return consulta(sql,[usuario, id], "Não foi possível atualizar esse usuário")
     }
 
     delete(id){

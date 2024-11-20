@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use('/livros', livroRoutes); 
 app.use('/usuarios' , userRoutes);
-app.use('emprestimos' , loansRoutes )
+app.use('/emprestimos' , loansRoutes )
 
 app.get('/', (req, res) => {
     res.status(200).send('funcionando corretamente!');

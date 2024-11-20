@@ -13,7 +13,7 @@ class usuarioController{
     async show(req, res){
         try {
             const id = req.params.id
-            const rows =  await usersRepository.create(id)
+            const rows =  await usersRepository.findById(id)
             res.json(rows)
         } catch (erro){
             console.log(erro)
@@ -48,6 +48,7 @@ class usuarioController{
         try{
             const id = req.params.id
             const rows = await usersRepository.delete(id)
+            res.json(rows)
         }catch (erro){
             console.log(erro)
             res.json({erro:"Erro ao deletar usuário"})
