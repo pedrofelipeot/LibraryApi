@@ -7,38 +7,33 @@ class LoansController {
   async registrarEmprestimo(req, res) {
     try {
       const emprestimo = req.body;
-  
-      // Log do corpo da requisição
-      console.log("Corpo da requisição:", emprestimo);
-  
+
       // Verificar se o ID do usuário existe
       const usuario = await usersRepository.findById(emprestimo.usuario_id);
-      console.log("Usuário encontrado:", usuario); // Verificar se o usuário é retornado
       if (!usuario) {
         return res.status(404).json({ erro: "Usuário não encontrado." });
       }
-  
+
       // Verificar se o ID do livro existe
       const livro = await booksRepository.findById(emprestimo.livro_id);
-      console.log("Livro encontrado:", livro); // Verificar se o livro é retornado
       if (!livro) {
         return res.status(404).json({ erro: "Livro não encontrado." });
       }
-  
+
+      // Verificar o número de empréstimos pendentes do usuário
+      const emprestimosPendentes = await loansRepository.findEmprestimosPendentesByUsuario(emprestimo.usuario_id);
+      if (emprestimosPendentes.length >= 3) {
+        return res.status(400).json({ erro: "O usuário já atingiu o limite de empréstimos pendentes." });
+      }
+
       // Registrar o empréstimo
       const rows = await loansRepository.registrarEmprestimo(emprestimo);
-      console.log("Empréstimo registrado:", rows);
       res.status(201).json(rows);
     } catch (erro) {
-      console.error("Erro no registro de empréstimo:", erro); // Verificar o erro
-      if (erro.message && erro.message.includes("limite")) {
-        return res.status(400).json({ erro: erro.message });
-      }
+      console.error("Erro no registro de empréstimo:", erro);
       res.status(500).json({ erro: "Erro ao registrar empréstimo." });
     }
   }
-  
-  
 
   // Registrar devolução de um empréstimo
   async registrarDevolucao(req, res) {
