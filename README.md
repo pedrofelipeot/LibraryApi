@@ -53,7 +53,7 @@ Siga as etapas abaixo para clonar e configurar o repositório localmente:
 
 7. Utilize o arquivo `Insomnia_URLs` localizado na raiz do projeto para importar as rotas no Insomnia e facilitar os testes da API.
 
-![Insomnia](https://github.com/pedrofelipeot/LibraryApi/tree/main/Insomnia_URLs) <!-- Exemplo de captura de tela do Insomnia -->
+[URL Insomnia](https://github.com/pedrofelipeot/LibraryApi/tree/main/Insomnia_URLs)
 
 ---
 
@@ -73,7 +73,6 @@ mysql --version
 git --version
 ```
 
-![Node.js](./images/nodejs-logo.png) <!-- Exemplo de logo do Node.js -->
 
 ---
 
