@@ -1,7 +1,3 @@
-# LibraryApi
-
-![Logo](./images/logo.png) <!-- Exemplo de logo do projeto -->
-
 ## Descrição do projeto
 
 A **LibraryApi** é uma API RESTful para gerenciar bibliotecas, incluindo funcionalidades para cadastro de livros, usuários e empréstimos. O projeto utiliza Node.js e MySQL como tecnologias principais.
