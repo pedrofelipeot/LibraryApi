@@ -1,6 +1,7 @@
 import { consulta } from "../config/db.config.js";
 
 class UsuarioRepository {
+  
   create(usuario) {
     const sql = "INSERT INTO usuarios SET ?";
     return consulta(sql, usuario, "Não foi possível cadastrar o usuário.");

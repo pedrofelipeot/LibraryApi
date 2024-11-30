@@ -3,38 +3,33 @@ import booksRepository from "../repositories/books.repository.js";
 import usersRepository from "../repositories/users.repository.js";
 
 class LoansController {
-  // Registrar um novo empréstimo
+  
   async registrarEmprestimo(req, res) {
     try {
       const emprestimo = req.body;
-
       // Verificar se o ID do usuário existe
       const usuario = await usersRepository.findById(emprestimo.usuario_id);
       if (!usuario) {
         return res.status(404).json({ erro: "Usuário não encontrado." });
       }
-
       // Verificar se o ID do livro existe
       const livro = await booksRepository.findById(emprestimo.livro_id);
       if (!livro) {
         return res.status(404).json({ erro: "Livro não encontrado." });
       }
-
       // Verificar o número de empréstimos pendentes do usuário
       const emprestimosPendentes = await loansRepository.findEmprestimosPendentesByUsuario(emprestimo.usuario_id);
       if (emprestimosPendentes.length >= 3) {
         return res.status(400).json({ erro: "O usuário já atingiu o limite de empréstimos pendentes." });
       }
-
       // Registrar o empréstimo
       const rows = await loansRepository.registrarEmprestimo(emprestimo);
-      res.status(201).json(rows);
+      res.status(201).json({ mensagem: "Emprestimo realizado com sucesso!", emprestimo: rows});
     } catch (erro) {
       console.error("Erro no registro de empréstimo:", erro);
       res.status(500).json({ erro: "Erro ao registrar empréstimo." });
     }
   }
-
   // Registrar devolução de um empréstimo
   async registrarDevolucao(req, res) {
     try {
