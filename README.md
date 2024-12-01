@@ -122,7 +122,4 @@ git --version
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
-
-![Licença MIT](./images/mit-logo.png) <!-- Exemplo de logo de licença -->
-
+Este projeto está licenciado sob a licença Creative Commons - consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
