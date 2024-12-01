@@ -2,7 +2,7 @@
 
 A **LibraryApi** é uma API RESTful para gerenciar bibliotecas, incluindo funcionalidades para cadastro de livros, usuários e empréstimos. O projeto utiliza Node.js e MySQL como tecnologias principais.
 
-![Diagrama do Banco de Dados](./images/diagrama-db.png) <!-- Exemplo de diagrama do banco de dados -->
+![Diagrama do Banco de Dados](libraryDocs/database/diagrama.png) <!-- Exemplo de diagrama do banco de dados -->
 
 ---
 
@@ -122,7 +122,4 @@ git --version
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
-
-![Licença MIT](./images/mit-logo.png) <!-- Exemplo de logo de licença -->
-
+Este projeto está licenciado sob a licença Creative Commons - consulte o arquivo [LICENSE](./LICENSE) para mais detalhes.
