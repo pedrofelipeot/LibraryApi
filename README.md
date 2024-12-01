@@ -56,6 +56,36 @@ Siga as etapas abaixo para clonar e configurar o repositório localmente:
 [URL Insomnia](https://github.com/pedrofelipeot/LibraryApi/tree/main/Insomnia_URLs)
 
 ---
+---
+
+## Exemplos de Requisições no Insomnia
+
+### POST e PUT de Usuários
+- **POST**: Cadastro de um novo usuário  
+  ![POST Usuário](./imagens/usuario.png) <!-- Substitua pelo caminho correto da imagem -->
+
+- **PUT**: Atualização de um usuário existente  
+  ![PUT Usuário](./imagens/Put_usuario.png) <!-- Substitua pelo caminho correto da imagem -->
+
+---
+
+### POST e PUT de Livros
+- **POST**: Cadastro de um novo livro  
+  ![POST Livro](./imagens/livro.png) <!-- Substitua pelo caminho correto da imagem -->
+
+- **PUT**: Atualização de um livro existente  
+  ![PUT Livro](./imagens/Put_livro.png) <!-- Substitua pelo caminho correto da imagem -->
+
+---
+
+### POST e PUT de Empréstimos
+- **POST**: Cadastro de um novo empréstimo  
+  ![POST Empréstimo](./imagens/Emprestimo.png) <!-- Substitua pelo caminho correto da imagem -->
+
+- **PUT**: Atualização do status de um empréstimo  
+  ![PUT Empréstimo](./imagens/Put_Emprestimo.png) <!-- Substitua pelo caminho correto da imagem -->
+
+---
 
 ## Pré-requisitos
 
