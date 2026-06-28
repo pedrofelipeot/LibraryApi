@@ -1,32 +1,39 @@
-import { consulta } from "../config/db.config.js";
+import prisma from "../config/prisma.js";
 
 class BooksRepository {
-  create(livro) {
-    const sql = "INSERT INTO livros SET ?";
-    return consulta(sql, livro, "Não foi possível cadastrar o livro!");
+  async create(livro) {
+    return await prisma.livro.create({
+      data: livro
+    });
   }
 
-  findAll() {
-    const sql = "SELECT * FROM livros";
-    return consulta(sql, "Não foi possível listar os livros!");
+  async findAll() {
+    return await prisma.livro.findMany();
   }
 
   async findById(id) {
-    console.log("Buscando livro com ID:", id); // Log para depuração
-    const sql = "SELECT * FROM livros WHERE id = ?";
-    const resultado = await consulta(sql, [id], "Não foi possível encontrar o livro com esse ID!");
-    console.log("Resultado da busca do livro:", resultado); // Log do retorno
-    return resultado[0] || null; // Retorna o primeiro livro ou null
+    return await prisma.livro.findUnique({
+      where: {
+        id: Number(id)
+      }
+    });
   }
 
-  update(livro, id) {
-    const sql = "UPDATE livros SET ? WHERE id = ?";
-    return consulta(sql, [livro, id], "Não foi possível atualizar o livro!");
+  async update(livro, id) {
+    return await prisma.livro.update({
+      where: {
+        id: Number(id)
+      },
+      data: livro
+    });
   }
 
-  delete(id) {
-    const sql = "DELETE FROM livros WHERE id = ?";
-    return consulta(sql, [id], "Não foi possível excluir o livro!");
+  async delete(id) {
+    return await prisma.livro.delete({
+      where: {
+        id: Number(id)
+      }
+    });
   }
 }
 
