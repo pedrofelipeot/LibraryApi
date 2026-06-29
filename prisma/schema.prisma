@@ -6,7 +6,6 @@ generator client {
 datasource db {
   provider = "mysql"
 }
-
 model Livro {
   id             Int     @id @default(autoincrement())
   titulo         String
@@ -15,6 +14,8 @@ model Livro {
   anoPublicacao  Int?
 
   emprestimos    Emprestimo[]
+
+  @@map("livro")
 }
 
 model Usuario {
@@ -25,16 +26,20 @@ model Usuario {
   telefone    String?
 
   emprestimos Emprestimo[]
+
+  @@map("usuario")
 }
 
 model Emprestimo {
-  id              Int       @id @default(autoincrement())
-  usuarioId       Int
-  livroId         Int
-  dataEmprestimo  DateTime?
-  dataDevolucao   DateTime?
-  status          String    @default("pendente")
+  id             Int       @id @default(autoincrement())
+  usuarioId      Int
+  livroId        Int
+  dataEmprestimo DateTime  @default(now())
+  dataDevolucao  DateTime?
+  status         String    @default("pendente")
 
   usuario Usuario @relation(fields: [usuarioId], references: [id])
   livro   Livro   @relation(fields: [livroId], references: [id])
+
+  @@map("emprestimo")
 }

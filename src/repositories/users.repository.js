@@ -1,34 +1,40 @@
-import { consulta } from "../config/db.config.js";
+import prisma from "../config/prisma.js";
 
-class UsuarioRepository {
-  
-  create(usuario) {
-    const sql = "INSERT INTO usuarios SET ?";
-    return consulta(sql, usuario, "Não foi possível cadastrar o usuário.");
+class UsersRepository {
+  async create(usuario) {
+    return await prisma.usuario.create({
+      data: usuario
+    });
   }
 
-  findAll() {
-    const sql = "SELECT * FROM usuarios";
-    return consulta(sql, "Não foi possível listar os usuários.");
+  async findAll() {
+    return await prisma.usuario.findMany();
   }
 
   async findById(id) {
-    console.log("Buscando usuário com ID:", id); // Log para depuração
-    const sql = "SELECT * FROM usuarios WHERE id = ?";
-    const resultado = await consulta(sql, [id], "Não foi possível listar o usuário com esse ID.");
-    console.log("Resultado da busca do usuário:", resultado); // Log do retorno
-    return resultado[0] || null; // Retorna o primeiro usuário ou null
+    return await prisma.usuario.findUnique({
+      where: {
+        id: Number(id)
+      }
+    });
   }
 
-  update(usuario, id) {
-    const sql = "UPDATE usuarios SET ? WHERE id = ?";
-    return consulta(sql, [usuario, id], "Não foi possível atualizar o usuário.");
+  async update(usuario, id) {
+    return await prisma.usuario.update({
+      where: {
+        id: Number(id)
+      },
+      data: usuario
+    });
   }
 
-  delete(id) {
-    const sql = "DELETE FROM usuarios WHERE id = ?";
-    return consulta(sql, [id], "Não foi possível deletar o usuário.");
+  async delete(id) {
+    return await prisma.usuario.delete({
+      where: {
+        id: Number(id)
+      }
+    });
   }
 }
 
-export default new UsuarioRepository();
+export default new UsersRepository();
